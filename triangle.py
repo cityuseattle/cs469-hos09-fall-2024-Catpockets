@@ -1,17 +1,12 @@
-
 # Maximum path sum in a triangle
 
 def maxPathSum(tri):
     totalRow = len(tri)
-    # here using Bottom-Up Approach of DP
-
-    '''
-    Please fill in your answer to replace the "?" in the code block
-    '''
-    for row in range(?, -1, -1):
-        for col in range(row):
-            tri[?][col] += max(tri[?][?], tri[?][?])
-    return tri[?][?]
+    # Using Bottom-Up Approach of DP
+    for row in range(totalRow - 2, -1, -1):  # Start from second-to-last row
+        for col in range(row + 1):  # Iterate over each element in the row
+            tri[row][col] += max(tri[row + 1][col], tri[row + 1][col + 1])
+    return tri[0][0]  # The top element contains the maximum sum
 
 # Test case #1: output = 30 (=7+3+8+7+5)
 print(maxPathSum([
